@@ -1,7 +1,44 @@
 (() => {
-  const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const root = document.documentElement;
   const $ = (s, r = document) => r.querySelector(s);
   const $$ = (s, r = document) => [...r.querySelectorAll(s)];
+
+  const read = (k) => {
+    try {
+      return localStorage.getItem(k);
+    } catch (e) {
+      return null;
+    }
+  };
+  const write = (k, v) => {
+    try {
+      localStorage.setItem(k, v);
+    } catch (e) {}
+  };
+
+  const system = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const saved = read("motion");
+  const motionOff = () => system || root.dataset.motion === "off";
+  if (saved === "off") root.dataset.motion = "off";
+
+  const motionBtn = $("[data-motion-toggle]");
+  const syncMotionBtn = () => {
+    if (!motionBtn) return;
+    const off = motionOff();
+    motionBtn.setAttribute("aria-pressed", String(off));
+    motionBtn.textContent = off ? "Animations: off" : "Animations: on";
+    motionBtn.disabled = system;
+    if (system) motionBtn.title = "Your device is set to reduce motion";
+  };
+  if (motionBtn) {
+    motionBtn.addEventListener("click", () => {
+      const next = root.dataset.motion === "off" ? "on" : "off";
+      root.dataset.motion = next;
+      write("motion", next);
+      syncMotionBtn();
+    });
+    syncMotionBtn();
+  }
 
   const JOKES = [
     ["🪓", "Why don't Vikings send emails? They'd rather raid the inbox."],
@@ -29,10 +66,21 @@
   };
 
   if (toast) {
-    $("button", toast).addEventListener("click", () => {
+    const hide = () => {
       clearTimeout(timer);
       toast.classList.remove("show");
-    });
+    };
+    const hold = () => clearTimeout(timer);
+    const release = () => {
+      clearTimeout(timer);
+      timer = setTimeout(hide, 6000);
+    };
+    $("button", toast).addEventListener("click", hide);
+    toast.addEventListener("mouseenter", hold);
+    toast.addEventListener("focusin", hold);
+    toast.addEventListener("mouseleave", release);
+    toast.addEventListener("focusout", release);
+    addEventListener("keydown", (e) => e.key === "Escape" && hide());
   }
   $$("[data-joke]").forEach((el) => el.addEventListener("click", joke));
 
@@ -80,7 +128,7 @@
   });
 
   const embers = $("#embers");
-  if (embers && !reduce) {
+  if (embers) {
     const ctx = embers.getContext("2d");
     let W = 0;
     let H = 0;
@@ -110,7 +158,10 @@
 
     const loop = () => {
       requestAnimationFrame(loop);
-      if (!visible) return;
+      if (!visible || motionOff()) {
+        if (motionOff()) ctx.clearRect(0, 0, W, H);
+        return;
+      }
       ctx.clearRect(0, 0, W, H);
       parts.forEach((p, i) => {
         p.y -= p.vy;
