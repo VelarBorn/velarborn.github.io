@@ -5,23 +5,55 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Support - VÉLARBÖRN</title>
   <meta name="description" content="Get help with VÉLARBÖRN.">
+  <meta name="theme-color" content="#0f0d0b">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%9B%A1%EF%B8%8F%3C/text%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <main>
-    <h1>Support</h1>
-    <p class="tagline">VÉLARBÖRN</p>
+  <div class="progress"></div>
 
-    <p>Found a bug, have a question, or want to share feedback? We'd love to hear from you.</p>
+  <header class="nav scrolled">
+    <div class="wrap">
+      <a class="brand" href="index.html" aria-label="VÉLARBÖRN home">🛡️ VÉLAR<span>BÖRN</span></a>
+      <button class="menu-btn" aria-label="Menu" aria-expanded="false" aria-controls="menu"><span></span></button>
+      <ul id="menu">
+        <li><a href="index.html#features">Features</a></li>
+        <li><a href="index.html#fog">Fog of War</a></li>
+        <li><a href="index.html#play">How it plays</a></li>
+        <li><a href="index.html#faq">FAQ</a></li>
+        <li><a class="active" href="support.html">Support</a></li>
+      </ul>
+    </div>
+  </header>
 
-    <h2>Contact</h2>
-    <p>Open an issue on our <a href="https://github.com/VelarBorn/velarborn.github.io/issues">GitHub issue tracker</a>.</p>
+  <main class="page">
+    <div class="wrap">
+      <h1 class="reveal">Support</h1>
+      <p class="reveal">Found a bug, have a question, or want to share feedback? We'd love to hear from you.</p>
 
-    <h2>When you write to us</h2>
-    <p>Please include your device model, iOS version and a short description of what happened.</p>
+      <h2 class="reveal">Contact</h2>
+      <p class="reveal">Open an issue on our <a href="https://github.com/VelarBorn/velarborn.github.io/issues">GitHub issue tracker</a>.</p>
 
-    <p><a href="index.html">Back to home</a></p>
+      <h2 class="reveal">When you write to us</h2>
+      <p class="reveal">Please include your device model, iOS version and a short description of what happened.</p>
+
+      <p class="reveal" style="margin-top: 40px"><a class="btn" href="index.html">Back to home</a></p>
+    </div>
   </main>
-  <footer>&copy; 2026 VelarBorn</footer>
+
+  <footer>
+    <div class="wrap">
+      <span>&copy; 2026 VelarBorn. All rights reserved.</span>
+      <nav>
+        <a href="index.html">Home</a>
+        <a href="https://github.com/VelarBorn">GitHub</a>
+      </nav>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
 </body>
 </html>

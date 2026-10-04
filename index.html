@@ -3,28 +3,176 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>VÉLARBÖRN</title>
+  <title>VÉLARBÖRN - Raise your banner. Rule the realm.</title>
   <meta name="description" content="VÉLARBÖRN is a real-time medieval strategy game of conquest, economy and tactics.">
+  <meta name="theme-color" content="#0f0d0b">
+  <meta property="og:title" content="VÉLARBÖRN">
+  <meta property="og:description" content="Raise your banner. Rule the realm. A real-time medieval strategy game.">
+  <meta property="og:type" content="website">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%9B%A1%EF%B8%8F%3C/text%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <main>
-    <h1>VÉLARBÖRN</h1>
-    <p class="tagline">Raise your banner. Rule the realm.</p>
+  <div class="progress"></div>
 
-    <p>VÉLARBÖRN is a real-time medieval strategy game of conquest, economy and tactics. Build your base, gather resources and raise an army where every unit is an individual warrior.</p>
+  <header class="nav">
+    <div class="wrap">
+      <a class="brand" href="#top" aria-label="VÉLARBÖRN home">🛡️ VÉLAR<span>BÖRN</span></a>
+      <button class="menu-btn" aria-label="Menu" aria-expanded="false" aria-controls="menu"><span></span></button>
+      <ul id="menu">
+        <li><a href="#features">Features</a></li>
+        <li><a href="#fog">Fog of War</a></li>
+        <li><a href="#play">How it plays</a></li>
+        <li><a href="#faq">FAQ</a></li>
+        <li><a href="support.html">Support</a></li>
+      </ul>
+    </div>
+  </header>
 
-    <h2>Features</h2>
-    <ul>
-      <li>Real-time strategy: command your units and claim the map.</li>
-      <li>Fog of war: scout the unknown and strike where your rival isn't looking.</li>
-      <li>Ranged and melee combat: arrows, fireballs and siege weapons.</li>
-      <li>Economy and building: gather resources and construct your keep.</li>
-    </ul>
+  <main id="top">
+    <section class="hero">
+      <canvas id="embers"></canvas>
+      <div class="wrap reveal">
+        <span class="badge"><i></i>Coming soon to iOS</span>
+        <h1>VÉLARBÖRN</h1>
+        <p class="sub">A real-time medieval strategy game of conquest, economy and tactics. Every unit counts.</p>
+        <div class="rotator" id="rotator"></div>
+        <div class="cta">
+          <a class="btn primary" href="#fog">⚔️ Scout the map</a>
+          <button class="btn" data-joke>🃏 Tell me a joke</button>
+        </div>
+      </div>
+      <div class="scroll-cue" aria-hidden="true"></div>
+    </section>
 
-    <h2>Support</h2>
-    <p>Need help? Visit the <a href="support.html">support page</a>.</p>
+    <section id="features">
+      <div class="wrap">
+        <span class="eyebrow reveal">Features</span>
+        <h2 class="title reveal">Built for commanders, not spectators</h2>
+        <p class="lead reveal">Every choice matters, from the first peasant to the last siege engine.</p>
+        <div class="grid">
+          <article class="card reveal">
+            <div class="ico">⚔️</div>
+            <h3>Individual units</h3>
+            <p>No faceless squads. Every soldier has their own health and answers to your command.</p>
+          </article>
+          <article class="card reveal">
+            <div class="ico">🏹</div>
+            <h3>Real ranged combat</h3>
+            <p>Arrows, fireballs and siege shots take time to land, so a sharp commander can dodge them.</p>
+          </article>
+          <article class="card reveal">
+            <div class="ico">🏗️</div>
+            <h3>Economy and building</h3>
+            <p>Gather resources, raise your keep, and add more builders to finish the job faster.</p>
+          </article>
+          <article class="card reveal">
+            <div class="ico">🌫️</div>
+            <h3>Fog of war</h3>
+            <p>What you can't see can hurt you. Scout ahead and strike where your rival isn't looking.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="fog" class="alt">
+      <div class="wrap">
+        <div class="stage-head">
+          <div>
+            <span class="eyebrow reveal">Try it</span>
+            <h2 class="title reveal">Scout the unknown</h2>
+            <p class="lead reveal">Move your cursor, or drag a finger, to lift the fog and find what the map is hiding.</p>
+          </div>
+          <div class="counter reveal" id="counter">0 / 5 discovered</div>
+        </div>
+        <div class="stage reveal" id="stage">
+          <div class="spot" style="left: 18%; top: 28%">🏰<small>Keep</small></div>
+          <div class="spot" style="left: 46%; top: 66%">🌲<small>Old forest</small></div>
+          <div class="spot" style="left: 70%; top: 30%">🐉<small>Dragon</small></div>
+          <div class="spot" style="left: 86%; top: 74%">💰<small>Gold mine</small></div>
+          <div class="spot" style="left: 32%; top: 80%">⚔️<small>Enemy camp</small></div>
+          <canvas></canvas>
+          <div class="hint">Hover or touch to scout</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="play">
+      <div class="wrap">
+        <span class="eyebrow reveal">How it plays</span>
+        <h2 class="title reveal">Three steps to the throne</h2>
+        <div class="steps">
+          <div class="step reveal">
+            <h3>Gather</h3>
+            <p>Send workers out, secure resources and keep the economy humming.</p>
+          </div>
+          <div class="step reveal">
+            <h3>Build</h3>
+            <p>Raise your keep, train your army and prepare for the fight ahead.</p>
+          </div>
+          <div class="step reveal">
+            <h3>Conquer</h3>
+            <p>Scout, outsmart and crush your rival in real-time battle.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="alt jester">
+      <div class="wrap">
+        <div class="face reveal">🃏</div>
+        <h2 class="title reveal">The Royal Jester</h2>
+        <p class="lead reveal" style="margin-inline: auto">Court is boring without him. Summon a joke if you dare.</p>
+        <button class="btn primary reveal" data-joke>Summon the jester</button>
+      </div>
+    </section>
+
+    <section id="faq">
+      <div class="wrap centered">
+        <span class="eyebrow reveal">FAQ</span>
+        <h2 class="title reveal">Good questions, noble guest</h2>
+        <div class="faq reveal" style="text-align: left">
+          <details>
+            <summary>What is VÉLARBÖRN?</summary>
+            <p>A real-time medieval strategy game where you build an economy, raise an army and outwit a rival under the fog of war.</p>
+          </details>
+          <details>
+            <summary>When can I play?</summary>
+            <p>It's in development and coming to the App Store. Check back here for launch news.</p>
+          </details>
+          <details>
+            <summary>How much will it cost?</summary>
+            <p>Pricing will be announced closer to launch.</p>
+          </details>
+          <details>
+            <summary>I found a bug. Who do I tell?</summary>
+            <p>Head to the <a href="support.html">support page</a> and tell us what happened.</p>
+          </details>
+        </div>
+      </div>
+    </section>
   </main>
-  <footer>&copy; 2026 VelarBorn</footer>
+
+  <footer>
+    <div class="wrap">
+      <span>&copy; 2026 VelarBorn. All rights reserved.</span>
+      <nav>
+        <a href="#top">Back to top</a>
+        <a href="support.html">Support</a>
+        <a href="https://github.com/VelarBorn">GitHub</a>
+      </nav>
+    </div>
+  </footer>
+
+  <div class="toast" id="toast" role="status" aria-live="polite">
+    <span class="em">🃏</span>
+    <span class="txt"></span>
+    <button aria-label="Dismiss">&times;</button>
+  </div>
+
+  <script src="script.js"></script>
 </body>
 </html>
