@@ -1,0 +1,32 @@
+name: Bug report
+description: Something in VÉLARBÖRN is not working. This is public, so do not include personal information.
+title: "[Bug] "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Issues are public. Please do not include personal information. For anything private, email velarbornapp@gmail.com.
+  - type: input
+    id: device
+    attributes:
+      label: Device and iOS version
+      placeholder: iPhone 15, iOS 18.1
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: Game version
+      placeholder: 0.1.0
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened?
+      description: What were you doing, what did you expect, and what happened instead?
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce

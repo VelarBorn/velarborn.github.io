@@ -19,7 +19,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=8">
+  <link rel="stylesheet" href="style.css?v=12">
 </head>
 <body>
   <a class="skip" href="#main">Skip to content</a>
@@ -48,9 +48,42 @@
       <p>Found a bug, stuck on a mission, or just want to say hello? We read everything and we are happy to help.</p>
 
       <div class="panel contact-card">
-        <p><strong>Contact us</strong><br>Open an issue on our GitHub issue tracker. Please do not include personal information in a public issue.</p>
-        <a class="btn primary" href="https://github.com/VelarBorn/velarborn.github.io/issues" rel="noopener">Open an issue</a>
+        <p><strong>Email us</strong><br>The best way to reach us, and the only way for anything private. We read every message.</p>
+        <div class="actions">
+          <a class="btn primary" href="mailto:velarbornapp@gmail.com?subject=V%C3%89LARB%C3%96RN%20support">velarbornapp@gmail.com</a>
+          <button type="button" class="btn" data-copy="velarbornapp@gmail.com">Copy address</button>
+        </div>
       </div>
+
+      <h2 id="message">Send us a message</h2>
+      <p>Fill this in and we will open it in your email app, ready to send. Nothing is sent through this website. Please do not include passwords or payment details.</p>
+      <form class="panel form" id="contact-form" action="mailto:velarbornapp@gmail.com" method="post" enctype="text/plain">
+        <div class="field">
+          <label for="topic">What is this about?</label>
+          <select id="topic" name="Topic" required>
+            <option>Bug report</option>
+            <option>Question</option>
+            <option>Feedback</option>
+            <option>Accessibility</option>
+            <option>Privacy request</option>
+            <option>Copyright notice</option>
+            <option>Something else</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="device">Device and iOS version <span class="opt">(optional)</span></label>
+          <input id="device" name="Device" type="text" placeholder="iPhone 15, iOS 18.1" autocomplete="off">
+        </div>
+        <div class="field">
+          <label for="msg">Your message</label>
+          <textarea id="msg" name="Message" rows="6" required></textarea>
+        </div>
+        <div class="field">
+          <button class="btn primary" type="submit">Open in my email app</button>
+          <p class="form-note" id="form-status" role="status"></p>
+        </div>
+      </form>
+      <p class="form-note">Prefer a public thread for bugs? <a href="https://github.com/VelarBorn/velarborn.github.io/issues" rel="noopener">Open a GitHub issue</a>, without personal information.</p>
 
       <h2 id="faq">Common questions</h2>
       <div class="faq">
@@ -64,7 +97,7 @@
         </details>
         <details>
           <summary>How do I report a bug?</summary>
-          <p>Open an issue and tell us your device model, your iOS version, the game version shown in the game, what you were doing, and what went wrong. Screenshots help a lot.</p>
+          <p>Use the <a href="#message">form above</a> or <a href="mailto:velarbornapp@gmail.com?subject=Bug%20report">email us</a>, and tell us your device model, your iOS version, the game version shown in the game, what you were doing, and what went wrong. Screenshots help a lot.</p>
         </details>
         <details>
           <summary>Where are the accessibility options?</summary>
@@ -107,6 +140,7 @@
           <p class="foot-title">Support</p>
           <ul>
             <li><a href="support.html">Help &amp; contact</a></li>
+            <li><a href="mailto:velarbornapp@gmail.com">Email us</a></li>
             <li><a href="privacy.html">Privacy Policy</a></li>
             <li><a href="terms.html">Terms of Use</a></li>
             <li><a href="accessibility.html">Accessibility</a></li>
@@ -134,6 +168,6 @@
     <button type="button" aria-label="Dismiss">&times;</button>
   </div>
 
-  <script src="script.js?v=8"></script>
+  <script src="script.js?v=12"></script>
 </body>
 </html>

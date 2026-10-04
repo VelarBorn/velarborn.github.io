@@ -1,0 +1,30 @@
+name: Accessibility feedback
+description: Something on the website or in the game is hard to use. This is public, so do not include personal information.
+title: "[Accessibility] "
+labels: ["accessibility"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for telling us. Issues are public. If you prefer to share this privately, email velarbornapp@gmail.com.
+  - type: dropdown
+    id: where
+    attributes:
+      label: Where is the problem?
+      options:
+        - The website
+        - The game
+        - Both
+    validations:
+      required: true
+  - type: textarea
+    id: barrier
+    attributes:
+      label: What were you trying to do, and what got in the way?
+    validations:
+      required: true
+  - type: input
+    id: tech
+    attributes:
+      label: Assistive technology or settings you use (optional)
+      placeholder: VoiceOver, larger text, switch control

@@ -84,6 +84,37 @@
   }
   $$("[data-joke]").forEach((el) => el.addEventListener("click", joke));
 
+  $$("[data-copy]").forEach((b) => {
+    const label = b.textContent;
+    b.addEventListener("click", async () => {
+      const text = b.dataset.copy;
+      try {
+        await navigator.clipboard.writeText(text);
+        b.textContent = "Copied";
+      } catch (e) {
+        b.textContent = text;
+      }
+      setTimeout(() => (b.textContent = label), 2500);
+    });
+  });
+
+  const form = $("#contact-form");
+  if (form) {
+    const status = $("#form-status");
+    const to = form.getAttribute("action").replace("mailto:", "");
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+      const topic = $("#topic").value;
+      const device = $("#device").value.trim();
+      const message = $("#msg").value.trim();
+      const body = message + (device ? `\n\n---\nDevice: ${device}` : "") + "\n\nSent from velarborn.github.io";
+      const url = `mailto:${to}?subject=${encodeURIComponent("[VÉLARBÖRN] " + topic)}&body=${encodeURIComponent(body)}`;
+      form.dataset.mailto = url;
+      status.textContent = `Opening your email app. If nothing happens, email us at ${to}.`;
+      window.location.href = url;
+    });
+  }
+
   const nav = $(".nav");
   const onScroll = () => nav && nav.classList.toggle("solid", scrollY > 24);
   addEventListener("scroll", onScroll, { passive: true });
